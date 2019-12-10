@@ -2,10 +2,16 @@ class Notif {
   // Transition time
   deltaMoveTime = 300;
   // Global Notification constructor
+  /**
+   * Create a new notification.
+   * @param {string} title The header of the notification.
+   * @param {string | any[]} message A longer message inside of the notification. This can be plain text or an array of mixed strings and HTML objects.
+   * @param {number} dieAfter Automatically closes the notification after ``dieAfter`` milliseconds.
+   */
   constructor(title, message, dieAfter)
   {
     if (document.querySelector("#notificationStylingObject") == null) {
-      console.log("Styling not made, adding default.");
+      // console.log("Styling not made, adding default.");
       Notif.addStyle();
     }
     // Variable check
@@ -14,10 +20,22 @@ class Notif {
     }
 
     // Object creation
+    /**
+     * Object of the notification.
+     */
     var mainDiv = document.createElement("div");
+    /**
+     * Title object
+     */
     var h1 = document.createElement("h1");
+    /**
+     * Description object
+     */
     var p = document.createElement("p");
     var button = document.createElement("a");
+    /**
+     * Button object
+     */
     var button_div = document.createElement("div");
     var button_div_p = document.createElement("p");
     var button_divExit = document.createElement("div");
@@ -92,7 +110,6 @@ class Notif {
     mainDiv.instance = this;
     mainDiv.close = function () {
       Notif.closeByObject(this);
-      return undefined;
     }
 
     // Return the object
@@ -113,7 +130,7 @@ class Notif {
   // Adding Notification Styling to the document. Required for use.
   // This is literally Initializing it
   /**
-   * 
+   * Adds styling to the document so the notification can be used.
    * @param {{
    * "theme":"light"|"dark",
    * "top":string,
@@ -265,6 +282,14 @@ class Notif {
     this.object.style.pointerEvents = "none";
   }
 
+  /**
+   * Assigne the button new text.
+   * @param {string} text
+   */
+  setButtonText(text) {
+    this.buttonObject.querySelector("p").innerText = text;
+  }
+
   // Class function to close current object
   close()
   {
@@ -315,4 +340,7 @@ class Notif {
   }
 }
 
-exports.Notif = Notif;
+// Export as NodeJS Module if needed
+try {
+  exports.Notif = Notif;
+} catch (error) {}

@@ -108,19 +108,18 @@ class Notif {
   }
 
   // Extra Initialize function for those who expect it instead of addStyle
-  static Initialize(options) {
-    if (options) {
-      // With Options
-      Notif.addStyle(options);
-    }
-    else {
-      // Without options: Using default.
-      Notif.addStyle();
-    }
-  }
+  static Initialize = Notif.addStyle;
 
   // Adding Notification Styling to the document. Required for use.
   // This is literally Initializing it
+  /**
+   * 
+   * @param {{
+   * "theme":"light"|"dark",
+   * "top":string,
+   * "transitionTime": number
+   * }} options 
+   */
   static addStyle(options = {}) {
     // Default style settings
     const dVars = {

@@ -287,7 +287,14 @@ class Notif {
    * @param {string} text
    */
   setButtonText(text) {
-    this.buttonObject.querySelector("p").innerText = text;
+    if (text == false) {
+      this.buttonObject.querySelector("p").innerText = "";
+      this.buttonObject.style.display = "none";
+    }
+    else {
+      this.buttonObject.querySelector("p").innerText = text;
+      this.buttonObject.style.display = "default";
+    }
   }
 
   // Class function to close current object

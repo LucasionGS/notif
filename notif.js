@@ -117,6 +117,7 @@ class Notif {
     this.titleObject = h1;
     this.descriptionObject = p;
     this.buttonObject = button_div;
+    this.exitObject = button_divExit;
   }
 
   // Random method to return a random integer from min to max
@@ -294,6 +295,19 @@ class Notif {
     else {
       this.buttonObject.querySelector("p").innerText = text;
       this.buttonObject.style.display = "default";
+    }
+  }
+
+  /**
+   * Set to true if you want the button to show, and false if you want it to disappear.
+   * @param {boolean} force 
+   */
+  toggleExitButton(force = undefined) {
+    if (force != undefined && typeof force == "boolean") {
+      this.exitObject.hidden = !force;
+    }
+    else {
+      this.exitObject.hidden = !this.exitObject.hidden;
     }
   }
 

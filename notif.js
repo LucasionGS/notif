@@ -283,8 +283,8 @@ class Notif {
   }
 
   /**
-   * Assigne the button new text.
-   * @param {string} text
+   * Assign the button new text.  
+   * @param {string | false} text
    */
   setButtonText(text) {
     if (text == false) {
